@@ -17,6 +17,7 @@ Pour coder, mais aussi utiliser certains logiciels qui ne sont que sur Linux ou 
 Plus loin je parle de distribution, dans le monde Linux, une distribution est un ensemble d'applications ajoutées au noyau (le vrai Linux). Il en existe beaucoup, les distributions les plus connues sont Ubuntu, Debian, Arch, Cinnamon ...
 Je vais ici utiliser Ubuntu puisque je débute.
 
+*NB. Dans PowerShell et l'Invite de commandes Windows, vous pouvez coller une commande en faisant un clic droit.
 
 
 **Ce que vous allez apprendre ici, le plus simplement du monde**
@@ -87,6 +88,45 @@ Cette méthode vous permet :
 * d'installer la distribution de votre choix sur le disque de votre choix (quand vous manquez de place sur C:\)
 * de se passer des sudo en installant une distribution root (si vous ne comprenez pas c'est normal, c'est pour les geeks)
 
-Et tout ça sans quitter Windows 10. C'est parti.
+Et tout ça sans quitter Windows 10.
+
+Téléchargez les 2 éléments suivants :
+1. [La dernière version d'Ubuntu 18.04](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-root.tar.xz)
+1. [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline/releases)
+
+* Créer un dossier lxrunoffline dans le dossier *Documents* de Windows (accessible depuis *Accès rapide* ou *Ce PC*).
+* Dézipper le contenu de LxRunOffline dans ce dossier, et placer l'Ubuntu téléchargé dans ce dossier.
+* Aller dans le Menu démarrer > taper *Invite de commandes* > Cliquer sur *Exécuter en tant qu'administrateur* dans la panneau droit des résultats de la recherche.
+* Entrer la commande suivante ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline``` (remplacer NOMDUTILISATEUR par votre identifiant Windows).
+* Voilà le moment d'installer Ubuntu. Choisir le dossier où l'installer, et comment nommer le système. Ici je l'installe sur le disque O: et je l'appelle Ubuntu18 <br>
+```lxrunoffline install -n Ubuntu18 -d O:\wsl\installed\Ubuntu18 -f bionic-server-cloudimg-amd64-root.tar.xz```
+
+Dans cette commande, -n spécifie le nom du système (pour différencier plusieurs systèmes), -d le dossier de destination, -f le fichier d'installation d'Ubuntu (ne pas le changer).
+
+Valider la commande avec Entrée puis patienter pendant l'installation.
+
+Quand la commande est à nouveau accessible : taper ```lxrunoffline list```, et paf, l'Invite de commandes renvoie le nom du système installé, ici Ubuntu18.
+
+On peut ainsi installer autant de distributions que l'on veut.
+
+Pour lancer le système avec une seule distribution installée, taper dans l'Invite de commandes
+* ```wsl```, la commande officielle du WSL
+* ou avec LxRunOffline ```lxrunoffline run -n Ubuntu18``` (l'Invite de commande doit être en mode administrateur ET positionné dans le dossier Documents\lxrunoffline où LxRunOffline a été dézippé. Pour se positionner dedans, entrer ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline```).
+
+Pour quitter Linux/la distribution, taper ```exit```.
+
+<hr>
+
+### Utiliser différents Ubuntu ou distributions WSL en parallèle
+
+Répéter l'opération du chapitre précédent pour installer une distribution en spécifiant un autre nom et un autre dossier de destination à LxRunOffline.
+
+Par exemple : ```lxrunoffline install -n Android9 -d O:\wsl\installed\Android9 -f bionic-server-cloudimg-amd64-root.tar.xz```
+
+Pour lancer le système avec plusieurs distributions installées, taper dans l'Invite de commandes
+* ```lxrunoffline run -n NOMDELADISTRIBUTION``` (l'Invite de commande doit être en mode administrateur ET positionné dans le dossier Documents\lxrunoffline où LxRunOffline a été dézippé. Pour se positionner dedans, entrer ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline```).
+* ou ```wsl```, qui démarrera le système par défaut, que l'on va apprendre à spécifier dans un chapitre suivant.
+
+<hr>
 
 **CHANTIER EN COURS, ça arrive**
