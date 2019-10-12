@@ -29,7 +29,7 @@ Je vais ici utiliser Ubuntu puisque je débute.
 * Installer Ubuntu dans WSL sur le disque ou la partition de votre choix
 * Utiliser différents Ubuntu WSL en parallèle
 * Déplacer de partition une distribution WSL
-* Cloner un Ubuntu WSL
+* Cloner WSL, créer une copie d'une distribution WSL
 * Faire une sauvegarde de votre Ubuntu WSL
 * Maitriser toutes les commandes WSL
 * Éditer les fichiers d'Ubuntu WSL avec VS Code (Visual Studio Code de Microsoft)
@@ -99,34 +99,82 @@ Téléchargez les 2 éléments suivants :
 * Aller dans le Menu démarrer > taper *Invite de commandes* > Cliquer sur *Exécuter en tant qu'administrateur* dans la panneau droit des résultats de la recherche.
 * Entrer la commande suivante ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline``` (remplacer NOMDUTILISATEUR par votre identifiant Windows).
 * Voilà le moment d'installer Ubuntu. Choisir le dossier où l'installer, et comment nommer le système. Ici je l'installe sur le disque O: et je l'appelle Ubuntu18 <br>
-```lxrunoffline install -n Ubuntu18 -d O:\wsl\installed\Ubuntu18 -f bionic-server-cloudimg-amd64-root.tar.xz```
+```lxrunoffline install -n Ubuntu18 -d O:\wsl\installed\Ubuntu18 -f bionic-server-cloudimg-amd64-root.tar.xz -s```
 
-Dans cette commande, -n spécifie le nom du système (pour différencier plusieurs systèmes), -d le dossier de destination, -f le fichier d'installation d'Ubuntu (ne pas le changer).
+Dans cette commande, -n spécifie le nom du système (pour différencier plusieurs systèmes), -d le dossier de destination, -f le fichier d'installation d'Ubuntu (ne pas le changer) et -s va créer un raccourci vers la machine WSL sur le bureau de Windows.
 
 Valider la commande avec Entrée puis patienter pendant l'installation.
 
-Quand la commande est à nouveau accessible : taper ```lxrunoffline list```, et paf, l'Invite de commandes renvoie le nom du système installé, ici Ubuntu18.
+**Afficher les distributions installées**
+Avec les commandes suivantes, au choix
+ * ```lxrunoffline list```, et paf, l'Invite de commandes renvoie le nom du système installé, ici Ubuntu18.
+ * ou ```wsl --list --all```
+
 
 On peut ainsi installer autant de distributions que l'on veut.
 
-Pour lancer le système avec une seule distribution installée, taper dans l'Invite de commandes
+**Pour lancer le système avec une seule distribution installée, taper dans l'Invite de commandes**
 * ```wsl```, la commande officielle du WSL
 * ou avec LxRunOffline ```lxrunoffline run -n Ubuntu18``` (l'Invite de commande doit être en mode administrateur ET positionné dans le dossier Documents\lxrunoffline où LxRunOffline a été dézippé. Pour se positionner dedans, entrer ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline```).
 
-Pour quitter Linux/la distribution, taper ```exit```.
+La commande affiche alors ```root@UTILISATEURWINDOWS```, ce qui veut dire que l'on est dans Linux.
+
+
+**Pour quitter Linux/la distribution**
+Taper simplement ```exit```.
 
 <hr>
 
-### Utiliser différents Ubuntu ou distributions WSL en parallèle
+### Utiliser différents Ubuntu ou distributions WSL en parallèle (10 minutes)
 
 Répéter l'opération du chapitre précédent pour installer une distribution en spécifiant un autre nom et un autre dossier de destination à LxRunOffline.
 
-Par exemple : ```lxrunoffline install -n Android9 -d O:\wsl\installed\Android9 -f bionic-server-cloudimg-amd64-root.tar.xz```
+Par exemple : ```lxrunoffline install -n Android9 -d O:\wsl\installed\Android9 -f bionic-server-cloudimg-amd64-root.tar.xz``` ou cloner la distribution (voir chapitres suivants).
 
 Pour lancer le système avec plusieurs distributions installées, taper dans l'Invite de commandes
 * ```lxrunoffline run -n NOMDELADISTRIBUTION``` (l'Invite de commande doit être en mode administrateur ET positionné dans le dossier Documents\lxrunoffline où LxRunOffline a été dézippé. Pour se positionner dedans, entrer ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline```).
-* ou ```wsl```, qui démarrera le système par défaut, que l'on va apprendre à spécifier dans un chapitre suivant.
+* ou simplement ```wsl```, qui démarrera la distribution WSL par défaut (voir les chaptitres suivants).
+
+Pour lancer plusieurs systèmes en parallèle, il suffit d'ouvrir autant d'Invites de commandes que de systèmes à lancer, et de spécifier
+* ```wsl --distribution NOMDELADISTRIBUTION```
+* ou ```lxrunoffline run -n NOMDELADISTRIBUTION```
 
 <hr>
+
+### Déplacer une distribution WSL (dépend de la taille du système à déplacer)
+
+LxRunOffline permet aussi de déplacer une distribution, qui prrendrait trop de place par exemple, pour libérer un disque.
+Je ne répète plus comment utiliser LxRunOffline (voir les chapitres précedents).
+```lxrunoffline move -n NOMDELADISTRIBUTION -d D:\WSL\Ubuntu18```
+
+Ici avec -n NOMDELADISTRIBUTION on spécifie le système, pour moi toujours -n Ubuntu18,
+avec -d on spécifie le dossier où elle sera placée : D:\WSL\Ubuntu18
+
+<hr>
+
+### Cloner WSL, créer une copie d'une distribution WSL (dépend de la taille du système à déplacer)
+
+Très utile pour avoir 2 environnements différents mais avec un travail de configuration initiale identique.
+```lxrunoffline duplicate -n NOMDELADISTRIBUTION -d O:\wsl\installed\Android8 -N Android8```
+
+Où -n NOMDELADISTRIBUTION désigne le système à cloner -n Ubuntu18 dans mon cas.
+-d O:\wsl\installed\Android8 le dossier où va être placé le clone
+et -N Android8 le nom de ma système cloné
+
+<hr>
+
+### Faire une sauvegarde d'une distribution WSL (dépend de la taille du système à déplacer)
+
+Après un long de travail de configuration, on veut mettre le système en lieu sûr. Tout simplement avec 
+```lxrunoffline export -n NOMDELADISTRIBUTION -f O:\wsl\sauvegarde Ubuntu18 wsl.tar.gz```
+
+Où -f O:\wsl\sauvegarde Ubuntu18 wsl.tar.gz désigne le dossier et le nom de la sauvegarde, en n'oubliant pas de préciser .tar.gz à la fin.
+Un fichier .xml est aussi enregistré.
+
+En cas de besoin, ce système peut être réinstallé en 2 minutes avec le classique ```lxrunoffline install -n Ubuntu18 -d O:\wsl\installed\Ubuntu18 -f O:\wsl\sauvegarde Ubuntu18 wsl.tar.gz```
+
+
+
+
 
 **CHANTIER EN COURS, ça arrive**
