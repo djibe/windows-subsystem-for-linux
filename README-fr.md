@@ -31,6 +31,7 @@ Je vais ici utiliser Ubuntu puisque je débute.
 * Déplacer de partition une distribution WSL
 * Cloner WSL, créer une copie d'une distribution WSL
 * Faire une sauvegarde de votre Ubuntu WSL
+* Désinstaller une distribution WSL
 * Maitriser toutes les commandes WSL
 * Éditer les fichiers d'Ubuntu WSL avec VS Code (Visual Studio Code de Microsoft)
 
@@ -119,9 +120,14 @@ On peut ainsi installer autant de distributions que l'on veut.
 
 La commande affiche alors ```root@UTILISATEURWINDOWS```, ce qui veut dire que l'on est dans Linux.
 
+Pas convaincu ? Taper ```lsb_release -a``` et paf, le shell Affiche : Ubuntu 18.04 !!!
 
-**Pour quitter Linux/la distribution**
-Taper simplement ```exit```.
+<hr>
+
+**Pour quitter ou fermer Linux/la distribution WSL**
+Taper ```exit```
+
+ou ```wsl -t NOMDELADISTRIBUTION```
 
 <hr>
 
@@ -173,7 +179,9 @@ Un fichier .xml est aussi enregistré.
 
 En cas de besoin, ce système peut être réinstallé en 2 minutes avec le classique ```lxrunoffline install -n Ubuntu18 -d O:\wsl\installed\Ubuntu18 -f O:\wsl\sauvegarde Ubuntu18 wsl.tar.gz```
 
+<hr>
 
+### Désinstaller une distribution WSL
 
 
 
