@@ -34,6 +34,7 @@ Je vais ici utiliser Ubuntu puisque je débute.
 * Désinstaller une distribution WSL
 * Maitriser toutes les commandes WSL
 * Éditer les fichiers d'Ubuntu WSL avec VS Code (Visual Studio Code de Microsoft)
+* Ressources intéressantes
 
 
 <hr>
@@ -95,7 +96,7 @@ Téléchargez les 2 éléments suivants :
 1. [La dernière version d'Ubuntu 18.04](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-root.tar.xz)
 1. [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline/releases)
 
-* Créer un dossier lxrunoffline dans le dossier *Documents* de Windows (accessible depuis *Accès rapide* ou *Ce PC*).
+* Créer un dossier nommé *lxrunoffline* dans le dossier *Documents* de Windows (accessible depuis *Accès rapide* ou *Ce PC*).
 * Dézipper le contenu de LxRunOffline dans ce dossier, et placer l'Ubuntu téléchargé dans ce dossier.
 * Aller dans le Menu démarrer > taper *Invite de commandes* > Cliquer sur *Exécuter en tant qu'administrateur* dans la panneau droit des résultats de la recherche.
 * Entrer la commande suivante ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline``` (remplacer NOMDUTILISATEUR par votre identifiant Windows).
@@ -110,6 +111,7 @@ Valider la commande avec Entrée puis patienter pendant l'installation.
 Avec les commandes suivantes, au choix
  * ```lxrunoffline list```, et paf, l'Invite de commandes renvoie le nom du système installé, ici Ubuntu18.
  * ou ```wsl --list --all```
+ * ou ```wslconfig /list```
 
 
 On peut ainsi installer autant de distributions que l'on veut.
@@ -125,9 +127,8 @@ Pas convaincu ? Taper ```lsb_release -a``` et paf, le shell Affiche : Ubuntu 18.
 <hr>
 
 **Pour quitter ou fermer Linux/la distribution WSL**
-Taper ```exit```
-
-ou ```wsl -t NOMDELADISTRIBUTION```
+* Taper ```exit```
+* ou ```wsl -t NOMDELADISTRIBUTION```
 
 <hr>
 
@@ -182,7 +183,12 @@ En cas de besoin, ce système peut être réinstallé en 2 minutes avec le class
 <hr>
 
 ### Désinstaller une distribution WSL
+*```wslconfig /u Ubuntu```
+*ou ```lxrunoffline uninstall -n Ubuntu```
 
 
-
-**CHANTIER EN COURS, ça arrive**
+### Ressources intéressantes
+https://www.pofilo.fr/post/20190727-terminator/
+https://www.howtogeek.com/344688/how-to-set-your-default-linux-distribution-on-windows-10/
+https://docs.microsoft.com/fr-fr/windows/wsl/wsl-config
+https://adamtheautomator.com/windows-subsystem-for-linux/
