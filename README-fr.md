@@ -33,6 +33,7 @@ Je vais ici utiliser Ubuntu puisque je débute.
 * Définir la distribution par défaut
 * Faire une sauvegarde de votre Ubuntu WSL
 * Désinstaller une distribution WSL
+* Utiliser une interface graphique sur votre Linux WSL (10 minutes)
 * Maitriser toutes les commandes WSL
 * Éditer les fichiers d'Ubuntu WSL avec VS Code (Visual Studio Code de Microsoft)
 * Ressources intéressantes
@@ -205,6 +206,7 @@ Entrer dans l'Invite de commande :
 * ou ```wsl --unregister NOMDELADISTRIBUTION```
 * Avec lxrunoffline : ```lxrunoffline uninstall -n NOMDELADISTRIBUTION```
 
+<hr>
 
 ### Utiliser une interface graphique sur votre Linux WSL (10 minutes)
 
@@ -220,7 +222,7 @@ Envie de pouvoir utiliser Linux avec la souris comme sur un vrai PC ? C'est poss
 
 Un grand merci à https://www.reddit.com/r/Windows10/comments/8dnyig/using_a_gui_with_wsl_on_windows_10_ubuntu_wsl/
 
-
+<hr>
 
 ### Ressources intéressantes
 
