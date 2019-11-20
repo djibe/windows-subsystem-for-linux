@@ -64,9 +64,9 @@ C'est fait.
 
 ### Installer WSL depuis les menus Windows (2 minutes)
 Alternative à la méthode avec PowerShell.
-Cliquer sur le menu démarrer > taper *Activer ou désactiver des fonctionnalités Windows* > cliquer sur le raccourci.
+Cliquer sur le menu démarrer de Windows > taper *Activer ou désactiver des fonctionnalités Windows* > cliquer sur le raccourci portant ce nom.
 
-Dans la liste, cocher le *Sous-système Windows pour Linux* et valider avec OK, redémarrer le PC.
+Dans la liste, cocher le *Sous-système Windows pour Linux* et valider avec *OK*, redémarrer le PC.
 
 <hr>
 
@@ -81,11 +81,12 @@ Au 1er lancement, il vous demande de choisir un nom d'utilisateur et un mot de p
 
 Et voilà, vous êtes sous Ubuntu depuis Windows 10.
 
-Mais où est l'interface graphique ? Voyez plus loin dans mes cours.
+Mais où est l'interface graphique ? Voyez plus loin dans mon cours.
 
 <hr>
 
 ### Installer Ubuntu dans WSL sans passer par le Windows Store (installation hors ligne, 30 minutes)
+
 Cette méthode vous permet :
 * d'installer plusieurs distributions en parallèle, soit des distributions différentes, soit la même mais avec des environnements différents, ce qui permet d'avoir une machine pour compiler Android 7 et une pour compiler Android 9. Yessss.
 * d'installer la distribution de votre choix sur le disque de votre choix (quand vous manquez de place sur C:\)
@@ -108,7 +109,7 @@ Dans cette commande, -n spécifie le nom du système (pour différencier plusieu
 
 Valider la commande avec Entrée puis patienter pendant l'installation.
 
-**Afficher les distributions installées**
+#### Afficher les distributions installées
 Avec les commandes suivantes, au choix
  * ```lxrunoffline list```, et paf, l'Invite de commandes renvoie le nom du système installé, ici Ubuntu18.
  * ou ```wsl --list --all```
@@ -117,7 +118,7 @@ Avec les commandes suivantes, au choix
 
 On peut ainsi installer autant de distributions que l'on veut.
 
-**Pour lancer le système avec une seule distribution installée, taper dans l'Invite de commandes**
+#### Pour lancer le système avec une seule distribution installée, taper dans l'Invite de commandes
 * ```wsl```, la commande officielle du WSL
 * ou avec LxRunOffline ```lxrunoffline run -n Ubuntu18``` (l'Invite de commande doit être en mode administrateur ET positionné dans le dossier Documents\lxrunoffline où LxRunOffline a été dézippé. Pour se positionner dedans, entrer ```cd /d C:\Users\NOMDUTILISATEUR\Documents\lxrunoffline```).
 
@@ -127,11 +128,13 @@ Pas convaincu ? Taper ```lsb_release -a``` et paf, le shell Affiche : Ubuntu 18.
 
 <hr>
 
-**Pour quitter ou fermer Linux/la distribution WSL**
+#### Pour quitter ou fermer Linux/la distribution WSL
 * Taper ```exit```
 * ou ```wsl -t NOMDELADISTRIBUTION```
 
+
 <hr>
+
 
 ### Utiliser différents Ubuntu ou distributions WSL en parallèle (10 minutes)
 
@@ -171,7 +174,8 @@ et -N Android8 le nom de ma système cloné
 
 <hr>
 
-### Définir la distribution par défaut
+### Définir la distribution par défaut (1 minute)
+
 Si vous utilisez plusieurs machines, vous voulez changer celle qui se lance par défaut.
 Pour celà, utilisez 
 
@@ -193,16 +197,33 @@ En cas de besoin, ce système peut être réinstallé en 2 minutes avec le class
 
 <hr>
 
-### Désinstaller une distribution WSL
-* ```wslconfig /u Ubuntu```
+### Désinstaller une distribution WSL (dépend de la taille du système à supprimer)
 
-* ou ```lxrunoffline uninstall -n Ubuntu```
+Entrer dans l'Invite de commande :
 
-### Utiliser une interface graphique sur votre Linux WSL
+* ```wslconfig /u NOMDELADISTRIBUTION```
+* ou ```wsl --unregister NOMDELADISTRIBUTION```
+* Avec lxrunoffline : ```lxrunoffline uninstall -n NOMDELADISTRIBUTION```
+
+
+### Utiliser une interface graphique sur votre Linux WSL (10 minutes)
+
+Envie de pouvoir utiliser Linux avec la souris comme sur un vrai PC ? C'est possible. Ici la démo en partant du Ubuntu installé manuellement détaillé plus haut.
+
+* Dans l'Invite de commande avec votre Distribution active, installez la distribution Ubuntu complète : ```apt-get install ubuntu-desktop```. Le téléchargement demande 1,5 Go de fichiers. Patientez.
+* On enchaine avec l'installation de du moteur de rendu XFCE4 : ```apt install xfce4```
+* Maintenant, dans Windows 10, télécharger la dernière version de *VcXSrv* : https://sourceforge.net/projects/vcxsrv/files/vcxsrv/
+* Dans le menu démarrer de Windows, chercher et lancer *Xlaunch*, pour l'affichage, préférer *One large window without tilebar*. Laisser les autres options par défaut. Authoriser l'accès Firewall de Windows.
+* Dans l'Invite de commande avec la distribution WSL en cours, taper ```export DISPLAY=:0```
+* puis ```xfce4-session```
+* Dans *Xlaunch* on peut enfin prendre en main la distribution WSL avec une interface graphique !
+
+Un grand merci à https://www.reddit.com/r/Windows10/comments/8dnyig/using_a_gui_with_wsl_on_windows_10_ubuntu_wsl/
 
 
 
 ### Ressources intéressantes
+
 https://www.pofilo.fr/post/20190727-terminator/
 
 https://www.howtogeek.com/344688/how-to-set-your-default-linux-distribution-on-windows-10/
