@@ -30,6 +30,7 @@ Je vais ici utiliser Ubuntu puisque je débute.
 * Utiliser différents Ubuntu WSL en parallèle
 * Déplacer de partition une distribution WSL
 * Cloner WSL, créer une copie d'une distribution WSL
+* Définir la distribution par défaut
 * Faire une sauvegarde de votre Ubuntu WSL
 * Désinstaller une distribution WSL
 * Maitriser toutes les commandes WSL
@@ -170,6 +171,16 @@ et -N Android8 le nom de ma système cloné
 
 <hr>
 
+### Définir la distribution par défaut
+Si vous utilisez plusieurs machines, vous voulez changer celle qui se lance par défaut.
+Pour celà, utilisez 
+
+* ```wslconfig /setdefault NOMDELADISTRIBUTION```
+* ou ```wsl --setdefault NOMDELADISTRIBUTION```
+* ou avec lxrunoffline : ```lxrunoffline set-default -n NOMDELADISTRIBUTION```
+
+<hr>
+
 ### Faire une sauvegarde d'une distribution WSL (dépend de la taille du système à déplacer)
 
 Après un long de travail de configuration, on veut mettre le système en lieu sûr. Tout simplement avec 
@@ -183,12 +194,19 @@ En cas de besoin, ce système peut être réinstallé en 2 minutes avec le class
 <hr>
 
 ### Désinstaller une distribution WSL
-*```wslconfig /u Ubuntu```
-*ou ```lxrunoffline uninstall -n Ubuntu```
+* ```wslconfig /u Ubuntu```
+
+* ou ```lxrunoffline uninstall -n Ubuntu```
+
+### Utiliser une interface graphique sur votre Linux WSL
+
 
 
 ### Ressources intéressantes
 https://www.pofilo.fr/post/20190727-terminator/
+
 https://www.howtogeek.com/344688/how-to-set-your-default-linux-distribution-on-windows-10/
+
 https://docs.microsoft.com/fr-fr/windows/wsl/wsl-config
+
 https://adamtheautomator.com/windows-subsystem-for-linux/
